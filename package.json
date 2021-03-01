@@ -1,10 +1,13 @@
 {
-  "name": "censuser-iam",
+  "name": "root",
   "version": "0.0.1",
   "description": "IAM service for user identity & access managment",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "lerna exec yarn start",
+    "test": "lerna run test --parallel",
+    "boot": "yarn global add lerna && lerna bootstrap",
+    "release": "yarn install && lerna publish && yarn clean"
   },
   "repository": "git+https://github.com/StasKuzichev/censuser-iam.git",
   "keywords": [
@@ -21,15 +24,14 @@
   },
   "homepage": "https://github.com/StasKuzichev/censuser-iam#readme",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/api/*",
-      "packages/client/*"
-    ]
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "typescript": "^4.2.2"
   },
   "devDependencies": {
-    "lerna": "^3.22.1",
-    "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.2"
-  }
+    "lerna": "^3.22.1"
+  }  
 }
